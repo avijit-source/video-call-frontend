@@ -4,6 +4,12 @@ import VideoComp from './VideoComp'
 
 function VideoContainer({ myStream, userStreamRef }) {
     const userStreams = useSelector((state) => state.room.userStreams)
+
+    useEffect(() => {
+        if (myStream.current) {
+            myStream.current.muted = true
+        }
+    }, [myStream])
     // useEffect(() => {
     //     if (userStreams && userStreams.length > 0) {
     //         userStreams.forEach((val, i) => {
