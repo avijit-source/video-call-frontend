@@ -75,7 +75,7 @@ function ChatList() {
                                 </div>
                                 <div className="innerspan">
                                     <span className="other" style={{ marginRight: "18px" }}>{val.username}</span>
-                                    <span className="other">{moment(val.time).format('MMMM Do YYYY, h:mm:ss a')}</span>
+                                    <span className="other">{moment(val.date).format('MMMM Do YYYY, h:mm:ss a')}</span>
                                 </div>
 
                             </div>
