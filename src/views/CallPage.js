@@ -95,8 +95,8 @@ function CallPage() {
 
         async function getMedia() {
             navigator.mediaDevices.getUserMedia({
-                video: true,
-                audio: true
+                audio: true,
+                video: {width:480,height:360}
             }).then((stream) => {
                 console.log("stream", myStream.current)
                 myStream.current.srcObject = stream;
