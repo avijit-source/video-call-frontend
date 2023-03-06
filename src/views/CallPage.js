@@ -163,7 +163,10 @@ function CallPage() {
         if (myPeer.current) {
             myPeer.current.on("open", id => {
                 console.log("opemed", id)
+                 if(firstJoined.current===false){
                    socket.emit("joinroom", { roomId: params.id }, { userPeerId: id })
+                   firstJoined.current = true
+                 }
                 myPeer.current.on('call', call => {
                     console.log("calling", call.peer, myStream.current.srcObject)
                     call.answer(myStream.current.srcObject)
