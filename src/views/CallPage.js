@@ -57,6 +57,7 @@ const ICESERVER = [{ url: 'stun:stun01.sipphone.com' },
     username: '28224511:1379330808'
 }]
 function CallPage() {
+    const firstJoined = useRef(false);
     const params = useParams()
     const location = useLocation()
     const myPeer = useRef()
@@ -90,7 +91,7 @@ function CallPage() {
             config: {
                 'iceServers': ICESERVER
             }
-        });
+        },[]);
 
 
         async function getMedia() {
@@ -162,7 +163,7 @@ function CallPage() {
         if (myPeer.current) {
             myPeer.current.on("open", id => {
                 console.log("opemed", id)
-                socket.emit("joinroom", { roomId: params.id }, { userPeerId: id })
+                   socket.emit("joinroom", { roomId: params.id }, { userPeerId: id })
                 myPeer.current.on('call', call => {
                     console.log("calling", call.peer, myStream.current.srcObject)
                     call.answer(myStream.current.srcObject)
